@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+
+<h2 class="text-center m-5">My ToDo list</h2>
+<div class="col-md-8 mx-auto text-right">
+    <button id="addNewGroup" class="btn btn-outline-success my-2" data-toggle="modal" data-target="#groupFormModal">Add
+        new group of tasks
+    </button>
+</div>
+<div class="accordion col-md-8 mx-auto" id="accordion">
+    <!--<div class="card">-->
+        <!--<div class="card-header d-flex justify-content-between" id="headingOne">-->
+            <!--&lt;!&ndash;<h5 class="mb-0">&ndash;&gt;-->
+            <!--<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"-->
+                    <!--aria-expanded="true" aria-controls="collapseOne">-->
+                <!--Home tasks-->
+            <!--</button>-->
+            <!--<button class="btn btn-outline-secondary addTaskBtn" type="button">Add task</button>-->
+            <!--&lt;!&ndash;</h5>&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">-->
+            <!--<div class="card-body">-->
+                <!--<ul class="list-group">-->
+                    <!--<li class="list-group-item d-flex justify-content-between align-items-center list-group-item-danger">-->
+                        <!--item 1 jadhkjsdhkjashdkjashdjkhasjkdh jasfhjksahfkjhdsjkfhkj jksfh sjkfhks jsfhkjdshkf kjshfsk-->
+                        <!--<div class="btn-area text-right">-->
+                            <!--<button class="btn btn-outline-secondary my-1" type="button">Edit</button>-->
+                            <!--<button class="btn btn-outline-secondary my-1" type="button">Delete</button>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="list-group-item d-flex justify-content-between align-items-center">item 1</li>-->
+                    <!--<li class="list-group-item d-flex justify-content-between align-items-center">item 1</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <!--<div class="card">-->
+        <!--<div class="card-header" id="headingTwo">-->
+            <!--<h5 class="mb-0">-->
+                <!--<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"-->
+                        <!--aria-expanded="false" aria-controls="collapseTwo">-->
+                    <!--Title 2-->
+                <!--</button>-->
+            <!--</h5>-->
+        <!--</div>-->
+        <!--<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">-->
+            <!--<div class="card-body">-->
+                <!--<ul class="list-group">-->
+                    <!--<li class="list-group-item d-flex justify-content-between align-items-center">item 1</li>-->
+                    <!--<li class="list-group-item d-flex justify-content-between align-items-center">item 1</li>-->
+                    <!--<li class="list-group-item d-flex justify-content-between align-items-center">item 1</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</div>
+
+<!-- Form for Group -->
+<div class="modal fade" id="groupFormModal" tabindex="-1" role="dialog" aria-labelledby="groupFormModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formGroup">
+                    <div class="form-group">
+                        <label for="groupTitle">Title of tasks group</label>
+                        <input type="text" class="form-control" id="groupTitle" placeholder="Enter title of group">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveGroupTitle">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Form for Group -->
+
+<!-- Form for Task -->
+<div class="modal fade" id="taskFormModal" tabindex="-1" role="dialog" aria-labelledby="taskFormModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formTask">
+                    <div class="form-group">
+                        <label for="taskContent">Task content</label>
+                        <textarea class="form-control" id="taskContent" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskStatus">Choose task status</label>
+                        <select class="form-control" id="taskStatus">
+                            <option>Open</option>
+                            <option>In progress</option>
+                            <option>Done</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Task priority</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskPriority" id="lowPriority"
+                                   value="low">
+                            <label class="form-check-label" for="lowPriority">
+                                Low
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskPriority" id="minorPriority"
+                                   value="minor">
+                            <label class="form-check-label" for="minorPriority">
+                                Minor
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskPriority" id="majorPriority"
+                                   value="major">
+                            <label class="form-check-label" for="majorPriority">
+                                Major
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="taskPriority" id="highPriority"
+                                   value="high">
+                            <label class="form-check-label" for="highPriority">
+                                High
+                            </label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveTask">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Form for Task -->
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!--<script src="src/js/functions.js"></script>-->
+<!--<script src="src/js/task.js"></script>-->
+<!--<script src="src/js/groupOfTasks.js"></script>-->
+<!--<script src="src/js/table.js"></script>-->
+<!--<script src="src/js/app.js"></script>-->
+<script src="dist/all.js"></script>
+</body>
+</html>
